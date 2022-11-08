@@ -1,6 +1,4 @@
-{
-  "data":[
-     {
+     [{
         "id":"8623",
         "type":"gin",
         "name":" BB9 Gin Bergamote",
@@ -68509,9 +68507,4 @@
         "picture_url":"https://ginventory.reed.be/api/v2/products/3994/picture",
         "average_rating":"8.4",
         "rating_count":70
-     }
-  ],
-  "meta":{
-     "total_count":8437
-  }
-}
+     }]
