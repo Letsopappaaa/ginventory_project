@@ -14,6 +14,10 @@ DROP_PERFECT_TONICS = '''
     DROP TABLE IF EXISTS perfect_tonics;
 '''
 
+DROP_COUNTRIES = '''
+    DROP TABLE IF EXISTS countries;
+'''
+
 CREATE_GINS = '''
     CREATE TABLE gins(
         id integer NOT NULL, 
@@ -25,7 +29,7 @@ CREATE_GINS = '''
         producer varchar, 
         country varchar, 
         abv DECIMAL(3,1), 
-        average_rating DECIMAL(2,1), 
+        average_rating DECIMAL(3,1), 
         rating_count integer NOT NULL
     );
 '''
@@ -48,7 +52,7 @@ CREATE_TONICS = '''
         producer varchar, 
         country varchar, 
         abv DECIMAL(3,1), 
-        average_rating DECIMAL(2,1), 
+        average_rating DECIMAL(3,1), 
         rating_count integer
     );
 '''
@@ -72,20 +76,20 @@ Source: https://gist.github.com/adhipg/1600028
 """
 
 CREATE_COUNTRIES = '''
-    CREATE TABLE IF NOT EXISTS country (
-        id SMALLINT  NOT NULL AUTO_INCREMENT,
+    CREATE TABLE IF NOT EXISTS countries (
+        id SMALLINT NOT NULL,
         iso char(2) NOT NULL,
         name varchar(80) NOT NULL,
         nicename varchar(80) NOT NULL,
-        iso3 char(3) DEFAULT NULL,
-        numcode SMALLINT  DEFAULT NULL,
-        phonecode SMALLINT  NOT NULL,
+        iso3 char(3) NULL,
+        numcode SMALLINT NULL,
+        phonecode SMALLINT NOT NULL,
         PRIMARY KEY (id)
     );
 '''
 
 INSERT_INTO_COUNTRIES = '''
-    INSERT INTO `country` (`id`, `iso`, `name`, `nicename`, `iso3`, `numcode`, `phonecode`) VALUES
+    INSERT INTO countries (id, iso, name, nicename, iso3, numcode, phonecode) VALUES
     (1, 'AF', 'AFGHANISTAN', 'Afghanistan', 'AFG', 4, 93),
     (2, 'AL', 'ALBANIA', 'Albania', 'ALB', 8, 355),
     (3, 'DZ', 'ALGERIA', 'Algeria', 'DZA', 12, 213),
@@ -274,7 +278,7 @@ INSERT_INTO_COUNTRIES = '''
     (186, 'ST', 'SAO TOME AND PRINCIPE', 'Sao Tome and Principe', 'STP', 678, 239),
     (187, 'SA', 'SAUDI ARABIA', 'Saudi Arabia', 'SAU', 682, 966),
     (188, 'SN', 'SENEGAL', 'Senegal', 'SEN', 686, 221),
-    (189, 'CS', 'SERBIA AND MONTENEGRO', 'Serbia and Montenegro', NULL, NULL, 381),
+    (189, 'CS', 'SERBIA', 'Serbia', NULL, NULL, 381),
     (190, 'SC', 'SEYCHELLES', 'Seychelles', 'SYC', 690, 248),
     (191, 'SL', 'SIERRA LEONE', 'Sierra Leone', 'SLE', 694, 232),
     (192, 'SG', 'SINGAPORE', 'Singapore', 'SGP', 702, 65),
@@ -324,7 +328,12 @@ INSERT_INTO_COUNTRIES = '''
     (236, 'EH', 'WESTERN SAHARA', 'Western Sahara', 'ESH', 732, 212),
     (237, 'YE', 'YEMEN', 'Yemen', 'YEM', 887, 967),
     (238, 'ZM', 'ZAMBIA', 'Zambia', 'ZMB', 894, 260),
-    (239, 'ZW', 'ZIMBABWE', 'Zimbabwe', 'ZWE', 716, 263);
+    (239, 'ZW', 'ZIMBABWE', 'Zimbabwe', 'ZWE', 716, 263),
+    (240, 'AX', 'ÅLAND ISLANDS', 'Åland Islands', 'ALA', 248, 358),
+    (241, 'IM', 'ISLE OF MAN', 'Isle of Man', 'IMN', 833, 0),
+    (242, 'GG', 'GUERNSEY', 'Guernsey', 'GGY', 831, 44),
+    (243, 'CW', 'CURAÇAO', 'Curaçao', 'CUW', 531, 599)
+    ;
 '''
 
 drop_statements = [
@@ -333,6 +342,7 @@ drop_statements = [
     DROP_GARNISHES,
     DROP_PERFECT_GARNISHES,
     DROP_PERFECT_TONICS,
+    DROP_COUNTRIES
     ]
 
 create_statements = [
@@ -341,4 +351,5 @@ create_statements = [
     CREATE_GARNISHES,
     CREATE_PERFECT_GARNISHES,
     CREATE_PERFECT_TONICS,
+    CREATE_COUNTRIES
     ]
