@@ -27,7 +27,8 @@ The aim of this project is to reverse engineer the private API of the Ginventory
 ## How to use
 
 - Clone repo
-- Change the config.cfg file, namely the following parameters must be provided: AWS KEY, AWS SECRET, AWS REGION and api_key for the Ginventory app.
+- Change the config.cfg file, namely the following parameters must be provided: AWS KEY, AWS SECRET, AWS REGION and api_key for the Ginventory app. 
+You need an AWS user (with admin priviledges for testing purposes) for the AWS KEY, SECRET and REGION variables. For the api_key you will need to emulate the Android app and see the requests being sent, and use your API key from there.
 - If you want to run the parser yourself, please also provide appropriate values for headers_user_agent and headers_from. Otherwise just read in from the provided local file.
 - You are all confugired, you can step through the cells of the jupyter notebook.
 
